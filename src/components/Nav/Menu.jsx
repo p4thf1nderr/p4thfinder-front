@@ -9,9 +9,7 @@ class Menu extends Component {
         super();
         this.state = {
             items: ItemList
-        };
-        console.log(this.state);
-        
+        };    
     }
 
     render() {

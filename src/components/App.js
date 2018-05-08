@@ -3,14 +3,15 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 // импорт компонентов для роутера
 import Main from './Main/Main';
+import '../assets/style.css';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <div>
+          <body>
             <Route exact path="/" component={Main} />
-          </div>
+          </body>
       </BrowserRouter>
     );
   }
