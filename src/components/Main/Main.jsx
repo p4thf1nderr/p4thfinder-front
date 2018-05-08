@@ -8,6 +8,7 @@ class Main extends Component {
         return(
             <div>
                 <Header />
+                <br />
                 <PostList />
                 <Footer />
                {/*  <Header />

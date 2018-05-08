@@ -14,31 +14,16 @@ class Menu extends Component {
 
     render() {
         return (
-            <nav className="navbar" aria-label="main navigation">
-            <div className="navbar-item has-dropdown is-hoverable">
+            <div>
+            <nav className="navbar is-link" aria-label="main navigation">
+            <div className="navbar-item">
                 
                {this.state.items.map((item) => (
                    <MenuItem key={item.id} item={item}/>
                ))}
-
-                <div className="navbar-dropdown">
-                    <a className="navbar-item">
-                        Overview
-                    </a>
-                    <a className="navbar-item">
-                        Elements
-                    </a>
-                    <a className="navbar-item">
-                        Components
-                    </a>
-                    <hr className="navbar-divider" />
-                    <div className="navbar-item">
-                        Version 0.7.1
-                    </div>
-                </div>
-
             </div>
         </nav>
+      </div>
         );
     }
 }
