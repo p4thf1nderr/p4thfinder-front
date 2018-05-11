@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "href": "http://google.com/",
+        "href": "/",
         "name": "Главная"
     },
     {
         "id": 2,
-        "href": "http://google.com/",
+        "href": "/contacts",
         "name": "Контакты"
     }
 ]
