@@ -1,12 +1,34 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import apiUrl from '../../tools/connection';
 
 class PostList extends Component {
+  constructor() {
+    super();
+    this.state = {
+        items: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get(apiUrl + '/posts')
+      .then(response => {
+        const items = response.data.data;
+        this.setState({ items });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
+   console.log(this.state);
+   
+    
     return(
-      <div class="columns">
-        <div class="column is-three-quarters">
-        <div class="card">
+      <div className="columns">
+        <div className="column is-three-quarters">
+        <div className="card">
             <header className="card-header">
               <p className="card-header-title">
                 PHP
