@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import apiUrl from '../../tools/connection';
+import PostItem from './PostItem';
+
 
 class PostList extends Component {
   constructor() {
@@ -28,26 +30,9 @@ class PostList extends Component {
     return(
       <div className="columns">
         <div className="column is-three-quarters">
-        <div className="card">
-            <header className="card-header">
-              <p className="card-header-title">
-                PHP
-              </p>
-              <a href="#" className="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p>Создание модуля Laravel</p>
-              </div>
-            </div>
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Подробнее</a>
-            </footer>
-          </div>
+                    {this.state.items.map(item =>
+                    <PostItem item={item} key={item.id} />
+          )}
        
         </div>
         <div class="column">
