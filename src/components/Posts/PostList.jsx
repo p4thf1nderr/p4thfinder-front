@@ -23,10 +23,7 @@ class PostList extends Component {
       });
   }
 
-  render() {
-   console.log(this.state);
-   
-    
+  render() { 
     return(
       <div className="columns">
         <div className="column is-three-quarters">
