@@ -6,7 +6,7 @@ class AdminMain extends Component {
     render() {
         return (
             <div>
-                 <Header />
+                <Header />
                 <br />
                 <Footer />
             </div>
