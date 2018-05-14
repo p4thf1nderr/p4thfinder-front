@@ -17,10 +17,9 @@ class Menu extends Component {
             <div>
                 <nav className="navbar is-link" aria-label="main navigation">
                     <div className="navbar-item">
-                        
-                    {this.state.items.map((item) => (
-                        <MenuItem key={item.id} item={item}/>
-                    ))}
+                        {this.state.items.map((item) => (
+                            <MenuItem key={item.id} item={item}/>
+                        ))}
                     </div>
                 </nav>
              </div>
