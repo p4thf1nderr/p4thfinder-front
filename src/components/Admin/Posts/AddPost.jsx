@@ -24,10 +24,6 @@ class AddPost extends Component {
               text: this.state.text
           };
 
-        let FIO = 'eee';
-
-
-
         axios.post(
             apiUrl + '/posts/new', // url
             { 'input': variables }, // data
