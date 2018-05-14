@@ -36,9 +36,6 @@ class AddPost extends Component {
                     'Content-Type':  'application/json',
                     'Accept':        'application/json',
                 },
-                // `withCredentials` indicates whether or not cross-site Access-Control requests
-                // should be made using credentials
-                //withCredentials: true // Может быть надо, а может быть нет
             } // config
         )
         .then(function (response) {
