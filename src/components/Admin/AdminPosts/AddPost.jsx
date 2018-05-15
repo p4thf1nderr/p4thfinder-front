@@ -27,7 +27,7 @@ class AddPost extends Component {
         };
 
         axios.post(
-            apiUrl + '/posts/new', // url
+            apiUrl + '/admin/posts/new', // url
             { 'input': variables }, // data
             {
                 headers: { 

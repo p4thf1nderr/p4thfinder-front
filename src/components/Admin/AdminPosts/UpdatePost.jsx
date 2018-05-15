@@ -47,7 +47,7 @@ class UpdatePost extends Component {
         };
 
         axios.post(
-            apiUrl + '/posts/edit/' + this.state.id, // url
+            apiUrl + '/admin/posts/edit/' + this.state.id, // url
             { 'input': variables }, // data
             {
                 headers: { 
