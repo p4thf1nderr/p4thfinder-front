@@ -5,18 +5,36 @@ import apiUrl from '../../../tools/connection';
 import AdminHeader from '../AdminHeader/AdminHeader'
 import Footer from '../../Footer/Footer'
 
-class AddPost extends Component {
+class UpdatePost extends Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
-            text: ''
+            text: '',
+            id: this.props.match.params.id,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
     }
+
+
+    componentWillMount() {
+        axios.get(apiUrl + '/posts/' + this.state.id)
+          .then(response => {
+            const item = response.data.data;
+            //console.log(item);
+            
+            this.setState({ title: item.title });
+            this.setState({ text: item.text });
+            //console.log(response.data.data);
+            
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
 
 
     handleSubmit(event) {
@@ -27,7 +45,7 @@ class AddPost extends Component {
         };
 
         axios.post(
-            apiUrl + '/posts/new', // url
+            apiUrl + '/posts/edit/' + this.state.id, // url
             { 'input': variables }, // data
             {
                 headers: { 
@@ -38,6 +56,7 @@ class AddPost extends Component {
         )
         .then(function (response) {
             console.log(response); // Здесь обработать ответ как надо
+            window.location = "/admin"
         })
         .catch(function (error) {
            console.log(error);
@@ -55,7 +74,6 @@ class AddPost extends Component {
 
     render() {
         return (
-            (
             <div className="site">
                 <AdminHeader />
                 <br />
@@ -81,9 +99,8 @@ class AddPost extends Component {
                 <Footer />
             </div>
             )
-        )
     }
 
 }
 
-export default AddPost;
+export default UpdatePost;

@@ -11,7 +11,7 @@ class AdminPostItem extends Component {
 
     render() {
         return(
-            <a class="panel-block is-active">
+            <a class="panel-block is-active" href={"admin/posts/edit/" + this.state.item.item.id}>
                 <span class="panel-icon">
                 <i class="fas fa-file-alt" aria-hidden="true"></i>
                 </span>

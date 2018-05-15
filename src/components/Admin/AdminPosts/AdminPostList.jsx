@@ -21,7 +21,7 @@ class AdminPostList extends Component {
           .catch(function (error) {
             console.log(error);
           });
-      }
+    }
 
     render() {
         return (
@@ -33,14 +33,14 @@ class AdminPostList extends Component {
 
                         {this.state.items.map(item =>
                             <AdminPostItem item={item} key={item.id} />
-                        )}
-                        
+                        )} 
                         <div class="panel-block">
                             <button class="button is-link is-outlined is-fullwidth">
                             пагинацию сюда
                             </button>
                         </div>
                     </nav>
+                    <a href="/admin/posts/new" class="button is-primary is-outlined">Создать</a>
                 </div>
         );
     };
