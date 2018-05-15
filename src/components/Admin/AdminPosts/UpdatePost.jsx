@@ -26,8 +26,10 @@ class UpdatePost extends Component {
             const item = response.data.data;
             //console.log(item);
             
-            this.setState({ title: item.title });
-            this.setState({ text: item.text });
+            this.setState({
+                 title: item.title,
+                 text: item.text 
+            });
             //console.log(response.data.data);
             
           })

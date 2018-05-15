@@ -38,6 +38,7 @@ class AddPost extends Component {
         )
         .then(function (response) {
             console.log(response); // Здесь обработать ответ как надо
+            window.location = "/admin"
         })
         .catch(function (error) {
            console.log(error);
