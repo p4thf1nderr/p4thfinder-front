@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Footer from '../Footer/Footer';
-import AdminPostList from './Posts/AdminPostList'
+import AdminPostList from './AdminPosts/AdminPostList'
 import AdminHeader from './AdminHeader/AdminHeader'
 
 class AdminMain extends Component {

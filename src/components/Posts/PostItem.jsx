@@ -11,8 +11,6 @@ class PostItem extends Component
       }
 
     render() {
-        console.log(this.state.item.item);
-        
         return (
             <div className="card">
                 <header className="card-header">
