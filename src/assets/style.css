@@ -7,3 +7,11 @@
 .content {
     flex: 1
 }
+
+.post-admin-list {
+    margin-bottom: 0px !important;
+}
+
+.navbar-item h3 {
+    color: white
+}

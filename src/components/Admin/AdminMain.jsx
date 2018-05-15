@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import AdminPostList from './Posts/AdminPostList'
+import AdminHeader from './AdminHeader/AdminHeader'
 
 class AdminMain extends Component {
     render() {
         return (
             <div className="site">
-                <Header />
+                <AdminHeader />
                 <div className="content">
                     <AdminPostList />
                 </div>
