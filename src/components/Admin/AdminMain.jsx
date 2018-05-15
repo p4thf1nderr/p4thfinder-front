@@ -6,9 +6,11 @@ import AdminPostList from './Posts/AdminPostList'
 class AdminMain extends Component {
     render() {
         return (
-            <div>
+            <div className="site">
                 <Header />
-                <AdminPostList />
+                <div className="content">
+                    <AdminPostList />
+                </div>
                 <Footer />
             </div>
         );

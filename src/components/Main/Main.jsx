@@ -6,10 +6,12 @@ import PostList from '../Posts/PostList'
 class Main extends Component {
     render() {
         return(
-            <div>
+            <div className="site">
                 <Header />
                 <br />
-                <PostList />
+                <div className="content">
+                    <PostList />
+                </div>
                 <Footer />
                {/*  <Header />
                 <Posts />

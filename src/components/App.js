@@ -12,11 +12,11 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-          <body>
+          <div>
             <Route exact path="/" component={Main} />
             <Route exact path="/contacts" component={ContactMain} />
             <Route exact path="/admin" component={AdminMain} />
-          </body>
+          </div>
       </BrowserRouter>
     );
   }

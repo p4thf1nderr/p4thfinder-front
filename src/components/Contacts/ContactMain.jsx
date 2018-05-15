@@ -6,10 +6,12 @@ import Footer from '../Footer/Footer';
 class ContactMain extends Component {
     render() {
         return(
-            <div>
+            <div className="site">
                 <Header />
                 <br />
-                <ContactForm />
+                <div className="content">
+                    <ContactForm />
+                </div>
                 <Footer />
                {/*  <Header />
                 <Posts />
