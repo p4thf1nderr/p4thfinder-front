@@ -1,29 +1,19 @@
 import decode from 'jwt-decode';
 import axios from 'axios';
+import apiUrl from '../connection';
 
 
 export default class AuthService {
     // Initializing important variables
-    constructor(domain) {
+   /*  constructor(domain) {
         this.domain = domain || 'http://localhost:8080' // API server domain
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
-    }
+    } */
 
     login(username, password) {
-        // Get a token from api server using the fetch api
-        /* return this.fetch(`${this.domain}/login`, {
-            method: 'POST',
-            body: JSON.stringify({
-                username,
-                password
-            })
-        }).then(res => {
-            this.setToken(res.token) // Setting the token in localStorage
-            return Promise.resolve(res);
-        }) */
         axios.post(
-            apiUrl + '/auth/login', // url
+            'http://p4thfinder-back.loc/auth/login', // url
             {
                 "email": "artem.tretyakov.91@inbox.ru",
                 "password": "17121991"
@@ -37,7 +27,8 @@ export default class AuthService {
         )
         .then(function (response) {
             console.log(response); // Здесь обработать ответ как надо
-            this.setToken(response.token);
+            return response;
+            //this.setToken(response.token);
         })
         .catch(function (error) {
            console.log(error);

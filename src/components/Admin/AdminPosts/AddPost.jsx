@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import apiUrl from '../../../tools/connection';
-import AdminHeader from '../AdminHeader/AdminHeader'
-import Footer from '../../Footer/Footer'
+import AdminHeader from '../AdminHeader/AdminHeader';
+import Footer from '../../Footer/Footer';
+import AuthService from '../../../tools/Services/AuthService';
 
 class AddPost extends Component {
     constructor(props) {
@@ -26,6 +27,13 @@ class AddPost extends Component {
               text: this.state.text
         };
 
+        this.Auth = new AuthService();
+
+        let a = this.Auth.login(1,2);
+
+        console.log(a);
+        
+
         axios.post(
             apiUrl + '/admin/posts/new', // url
             { 'input': variables }, // data
@@ -38,7 +46,7 @@ class AddPost extends Component {
         )
         .then(function (response) {
             console.log(response); // Здесь обработать ответ как надо
-            window.location = "/admin"
+            //window.location = "/admin"
         })
         .catch(function (error) {
            console.log(error);
