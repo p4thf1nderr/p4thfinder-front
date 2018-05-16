@@ -4,7 +4,6 @@ import axios from 'axios';
 import apiUrl from '../../../tools/connection';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import Footer from '../../Footer/Footer';
-import AuthService from '../../../tools/Services/AuthService';
 
 class AddPost extends Component {
     constructor(props) {
@@ -26,13 +25,6 @@ class AddPost extends Component {
               title: this.state.title,
               text: this.state.text
         };
-
-        this.Auth = new AuthService();
-
-        let a = this.Auth.login(1,2);
-
-        console.log(a);
-        
 
         axios.post(
             apiUrl + '/admin/posts/new', // url

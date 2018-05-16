@@ -11,29 +11,31 @@ export default class AuthService {
         this.getProfile = this.getProfile.bind(this)
     } */
 
+    constructor() {
+        this.login = this.login.bind(this);
+    }
+
     login(username, password) {
         axios.post(
-            'http://p4thfinder-back.loc/auth/login', // url
+            'http://p4thfinder-back.loc/auth/login',
             {
                 "email": "artem.tretyakov.91@inbox.ru",
                 "password": "17121991"
-            }, // data
+            },
             {
                 headers: { 
                     'Content-Type':  'application/json',
                     'Accept':        'application/json',
                 },
-            } // config
+            }
         )
-        .then(function (response) {
-            console.log(response); // Здесь обработать ответ как надо
-            return response;
-            //this.setToken(response.token);
+
+        .then(response => {
+            this.setToken(response.data.token)
         })
         .catch(function (error) {
            console.log(error);
         });
-
     }
 
     loggedIn() {
