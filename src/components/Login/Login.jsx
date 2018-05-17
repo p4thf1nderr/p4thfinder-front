@@ -29,8 +29,11 @@ class Login extends Component {
         event.preventDefault();
         this.Auth = new AuthService();
         this.Auth.login(this.state.email, this.state.password);
-    }
 
+        if (this.Auth.loggedIn() != false) {
+            window.location = "/admin";
+        }
+    }
 
 
     render() {
