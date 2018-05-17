@@ -8,6 +8,7 @@ import ContactMain from './Contacts/ContactMain';
 import AdminMain from './Admin/AdminMain';
 import AddPost from './Admin/AdminPosts/AddPost';
 import UpdatePost from './Admin/AdminPosts/UpdatePost';
+import Login from './Login/Login';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route exact path="/" component={Main} />
             <Route exact path="/contacts" component={ContactMain} />
             <Route exact path="/admin" component={AdminMain} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/admin/posts/new" component={AddPost} />
             <Route exact path="/admin/posts/edit/:id" component={UpdatePost} />
           </div>
