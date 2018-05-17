@@ -14,6 +14,7 @@ class Login extends Component {
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.check = this.check.bind(this);
     }
 
 
@@ -29,6 +30,13 @@ class Login extends Component {
         event.preventDefault();
         this.Auth = new AuthService();
         this.Auth.login(this.state.email, this.state.password);
+        this.check();
+    }
+
+    check() {
+        this.Auth = new AuthService();
+        console.log(this.Auth.loggedIn());
+        
 
         if (this.Auth.loggedIn() != false) {
             window.location = "/admin";
