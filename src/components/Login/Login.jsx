@@ -1,47 +1,68 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import apiUrl from '../../tools/connection';
+import AuthService from '../../tools/Services/AuthService';
+
 
 class Login extends Component {
     constructor(){
         super();
-        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            email: '',
+            password: ''
+        };
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+
+    handleEmailChange(event) {
+        this.setState({email:event.target.value})
+    }
+
+    handlePasswordChange(event) {
+        this.setState({password:event.target.value})
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.Auth = new AuthService();
+        this.Auth.login(this.state.email, this.state.password);
+    }
+
+
+
     render() {
+        console.log(this.state);
+        
         return (
             <div className="center">
                 <div className="card">
-                    <h1>Login</h1>
-                    <form>
-                        <input
-                            className="form-item"
-                            placeholder="Username goes here..."
-                            name="username"
-                            type="text"
-                            onChange={this.handleChange}
-                        />
-                        <input
-                            className="form-item"
-                            placeholder="Password goes here..."
-                            name="password"
-                            type="password"
-                            onChange={this.handleChange}
-                        />
-                        <input
-                            className="form-submit"
-                            value="SUBMIT"
-                            type="submit"
-                        />
+                    <h1>Залогинься</h1>
+                    <form onSubmit={this.handleSubmit}>
+                    <div className="field">
+                        <label className="label">E-mail</label>
+                    <div className="control">
+                        <input className="input" value={this.state.email} onChange={this.handleEmailChange} type="text" placeholder="E-mail" />
+                    </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Пароль</label>
+                    <div class="control">
+                        <input className="input" value={this.state.password} onChange={this.handlePasswordChange} type="password" placeholder="Пароль" />
+                    </div>
+                    </div>
+                    <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button is-link">Сохранить</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         );
-    }
-
-    handleChange(e){
-        this.setState(
-            {
-                [e.target.name]: e.target.value
-            }
-        )
     }
 }
 
