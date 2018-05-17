@@ -19,8 +19,8 @@ export default class AuthService {
         axios.post(
             'http://p4thfinder-back.loc/auth/login',
             {
-                "email": "artem.tretyakov.91@inbox.ru",
-                "password": "17121991"
+                "email": username,
+                "password": password
             },
             {
                 headers: { 
@@ -29,8 +29,9 @@ export default class AuthService {
                 },
             }
         )
-
         .then(response => {
+            console.log(response);
+            
             this.setToken(response.data.token)
         })
         .catch(function (error) {

@@ -37,31 +37,39 @@ class Login extends Component {
         console.log(this.state);
         
         return (
-            <div className="center">
-                <div className="card">
-                    <h1>Залогинься</h1>
-                    <form onSubmit={this.handleSubmit}>
-                    <div className="field">
-                        <label className="label">E-mail</label>
-                    <div className="control">
-                        <input className="input" value={this.state.email} onChange={this.handleEmailChange} type="text" placeholder="E-mail" />
-                    </div>
-                    </div>
+                <div className="site">
+                    <div className="content">
+                    <br />
 
-                    <div class="field">
-                        <label class="label">Пароль</label>
-                    <div class="control">
-                        <input className="input" value={this.state.password} onChange={this.handlePasswordChange} type="password" placeholder="Пароль" />
-                    </div>
-                    </div>
-                    <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button is-link">Сохранить</button>
-                            </div>
+                    <div class="columns">
+                        <div class="column"></div>
+                        <div class="column">
+                             <form onSubmit={this.handleSubmit}>
+                             <div className="field">
+                                 <label className="label">E-mail</label>
+                             <div className="control">
+                                 <input className="input" value={this.state.email} onChange={this.handleEmailChange} type="text" placeholder="E-mail" />
+                             </div>
+                             </div>
+         
+                             <div class="field">
+                                 <label class="label">Пароль</label>
+                             <div class="control">
+                                 <input className="input" value={this.state.password} onChange={this.handlePasswordChange} type="password" placeholder="Пароль" />
+                             </div>
+                             </div>
+                             <div class="field is-grouped">
+                                     <div class="control">
+                                         <button class="button is-link">Сохранить</button>
+                                     </div>
+                                 </div>
+                             </form>
                         </div>
-                    </form>
+                        <div class="column"></div>
+                    </div>
+                   
+                    </div>
                 </div>
-            </div>
         );
     }
 }
