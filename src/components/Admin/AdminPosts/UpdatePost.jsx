@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import apiUrl from '../../../tools/connection';
+import AuthService from '../../../tools/Services/AuthService';
 import AdminHeader from '../AdminHeader/AdminHeader'
 import Footer from '../../Footer/Footer'
 
@@ -46,6 +47,9 @@ class UpdatePost extends Component {
               text: this.state.text
         };
 
+        this.Auth = new AuthService();
+        let token = this.Auth.getToken();
+
         axios.post(
             apiUrl + '/admin/posts/edit/' + this.state.id, // url
             { 'input': variables }, // data
@@ -53,6 +57,7 @@ class UpdatePost extends Component {
                 headers: { 
                     'Content-Type':  'application/json',
                     'Accept':        'application/json',
+                    'Authorization': 'Bearer '+ token
                 },
             } // config
         )
