@@ -14,7 +14,7 @@ export default class AuthService {
 
     login(username, password) {
         axios.post(
-            'http://p4thfinder-back.loc/auth/login',
+            'http://p4thfinder.loc/auth/login',
             {
                 "email": username,
                 "password": password
