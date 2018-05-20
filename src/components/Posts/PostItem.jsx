@@ -17,11 +17,6 @@ class PostItem extends Component
                 <p className="card-header-title">
                     PHP
                 </p>
-                <a href="#" className="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                </a>
                 </header>
                 <div class="card-content">
                 <div class="content">
@@ -29,7 +24,7 @@ class PostItem extends Component
                 </div>
                 </div>
                 <footer class="card-footer">
-                <a href="#" class="card-footer-item">Подробнее</a>
+                <a href={'/posts/' + this.state.item.item.id} class="card-footer-item">Подробнее</a>
                 </footer>
             </div>
         );

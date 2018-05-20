@@ -38,7 +38,7 @@ class Login extends Component {
         console.log(this.Auth.loggedIn());
         
 
-        if (this.Auth.loggedIn() != false) {
+        if (this.Auth.loggedIn() !== false) {
             window.location = "/admin";
         }
     }
