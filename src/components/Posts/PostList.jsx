@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apiUrl from '../../tools/connection';
 import PostItem from './PostItem';
+import TagsList from '../Tags/TagList';
 
 
 class PostList extends Component {
@@ -32,30 +33,7 @@ class PostList extends Component {
           )}
        
         </div>
-        <div class="column">
-
-
-             <div class="card">
-            <header className="card-header">
-              <p className="card-header-title">
-                Категории
-              </p>
-              <a href="#" className="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-              <h5 class="subtitle is-5">Subtitle 1</h5>
-              <h5 class="subtitle is-5">Subtitle 2</h5>
-              <h5 class="subtitle is-5">Subtitle 2</h5>
-              <h5 class="subtitle is-5">Subtitle 2</h5>
-              </div>
-            </div>
-          </div>
-        </div>
+          <TagsList />
       </div>
 
     );
