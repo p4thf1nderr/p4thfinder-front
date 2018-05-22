@@ -33,10 +33,9 @@ class PostList extends Component {
     return(
       <div className="columns">
         <div className="column is-three-quarters">
-                    {this.state.items.map(item =>
-                    <PostItem item={item} key={item.id} />
-          )}
-       
+            {this.state.items.map(item =>
+              <PostItem item={item} key={item.id} />
+            )}
         </div>
           <TagsList onAction={this.filterByTag}/>
       </div>
