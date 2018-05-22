@@ -5,18 +5,21 @@ import apiUrl from '../../../tools/connection';
 import AuthService from '../../../tools/Services/AuthService';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import Footer from '../../Footer/Footer';
+import CheckBox from '../Checkbox/Checkbox';
 
 class AddPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
-            text: ''
+            text: '',
+            tagId: ''
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleTextChange = this.handleTextChange.bind(this);
+        this.checkedTags = this.checkedTags.bind(this);
     }
 
 
@@ -24,7 +27,8 @@ class AddPost extends Component {
         event.preventDefault();
         const variables = {
               title: this.state.title,
-              text: this.state.text
+              text: this.state.text,
+              tagId: this.state.tagId
         };
 
         this.Auth = new AuthService();
@@ -59,6 +63,16 @@ class AddPost extends Component {
         this.setState({text:event.target.value})
     }
 
+    checkedTags(tagId) {
+        //this.setState({tagId: tagId})
+        console.log('----');
+        console.log(tagId);
+        console.log('----');
+        
+        
+        
+    }
+
     render() {
         return (
             (
@@ -77,6 +91,8 @@ class AddPost extends Component {
                                 <textarea class="textarea" placeholder="Текст" onChange={this.handleTextChange} value={this.state.text} className="textarea"></textarea>
                             </div>
                         </div>
+                        <CheckBox onChange={this.checkedTags}/>
+                        <br />
                         <div class="field is-grouped">
                             <div class="control">
                                 <button class="button is-link">Сохранить</button>

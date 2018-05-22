@@ -11,6 +11,8 @@ class PostList extends Component {
     this.state = {
         items: []
     };
+
+    this.filterByTag = this.filterByTag.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +28,14 @@ class PostList extends Component {
 
 
   filterByTag(tagId) {
-    console.log(tagId); 
+    axios.get(apiUrl + '/posts/filter/' + tagId)
+      .then(response => {
+        const items = response.data.data;
+        this.state.items = items;
+      })
+      .catch(function (error) {
+        console.log(error);
+      }); 
   }
 
   render() { 
