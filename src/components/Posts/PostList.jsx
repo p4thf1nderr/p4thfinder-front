@@ -24,6 +24,11 @@ class PostList extends Component {
       });
   }
 
+
+  filterByTag(tagId) {
+    console.log(tagId); 
+  }
+
   render() { 
     return(
       <div className="columns">
@@ -33,7 +38,7 @@ class PostList extends Component {
           )}
        
         </div>
-          <TagsList />
+          <TagsList onAction={this.filterByTag}/>
       </div>
 
     );
