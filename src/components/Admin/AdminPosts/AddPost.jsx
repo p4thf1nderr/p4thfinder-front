@@ -13,7 +13,7 @@ class AddPost extends Component {
         this.state = {
             title: '',
             text: '',
-            tagId: ''
+            checked: []
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,8 +28,10 @@ class AddPost extends Component {
         const variables = {
               title: this.state.title,
               text: this.state.text,
-              tagId: this.state.tagId
+              checked: this.state.checked
         };
+        console.log(variables);
+        
 
         this.Auth = new AuthService();
         let token = this.Auth.getToken();
@@ -63,17 +65,15 @@ class AddPost extends Component {
         this.setState({text:event.target.value})
     }
 
-    checkedTags(tagId) {
-        //this.setState({tagId: tagId})
-        console.log('----');
-        console.log(tagId);
-        console.log('----');
+    checkedTags(event) {
+        console.log(event);
         
-        
-        
+        this.setState({checked:event})
     }
 
     render() {
+        console.log(this.state.checked);
+        
         return (
             (
             <div className="site">
@@ -92,6 +92,8 @@ class AddPost extends Component {
                             </div>
                         </div>
                         <CheckBox onChange={this.checkedTags}/>
+                        <br />
+                        <br />
                         <br />
                         <div class="field is-grouped">
                             <div class="control">

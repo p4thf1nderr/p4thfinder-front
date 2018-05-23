@@ -7,7 +7,7 @@ class CheckBox extends Component {
         super(props);
         this.state = {
             tags: [],
-            tagId: ''
+            checked: []
         };
 
         this.handleClick = this.handleClick.bind(this);
@@ -24,15 +24,21 @@ class CheckBox extends Component {
           });
     }
 
-    handleClick(tagId) {
-        this.props.onChange(tagId)
-        console.log(tagId);
+    handleClick(event) {
+        let checked = this.state.checked;
+        checked.push(event.target.value);
+        this.setState({checked: checked});
+        this.props.onChange(this.state.checked);
     }
 
+    
+
     render() {
+        console.log(this.state.checked);
+        
         return(
         <div class="select">
-        <select multiple size={this.state.tags.length} value={this.state.tagId} onChange={this.handleClick(this.state.tagId)}>
+        <select multiple size={this.state.tags.length} onChange={this.handleClick}>
         {this.state.tags.map(tag =>
                     <option value={tag.id}>{tag.title}</option>
         )}    
