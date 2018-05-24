@@ -12,9 +12,15 @@
     margin-bottom: 0px !important;
 }
 
-.navbar-item h3 {
-    color: white
+.navbar-item h1 {
+    color: white !important;
 }
+
+.navbar-item:hover {
+    background-color: #104db3 !important;
+}
+
+
 
 .tags {
     ;

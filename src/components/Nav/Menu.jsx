@@ -15,8 +15,8 @@ class Menu extends Component {
     render() {
         return (
             <div>
-                <nav className="navbar is-link" aria-label="main navigation">
-                    <div className="navbar-item">
+                <nav className="navbar is-link">
+                    <div className="navbar-menu">
                         {this.state.items.map((item) => (
                             <MenuItem key={item.id} item={item}/>
                         ))}

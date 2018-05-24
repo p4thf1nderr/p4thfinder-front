@@ -7,7 +7,7 @@ class AdminHeader extends Component {
                 <div>
                 <nav className="navbar is-link" aria-label="main navigation">
                     <div className="navbar-item">
-                        <a href="/admin"><h3>Админка</h3> </a>
+                        <a href="/admin"><h1>Админка</h1> </a>
                     </div>
                 </nav>
              </div>
