@@ -28,10 +28,14 @@ class PostList extends Component {
 
 
   filterByTag(tagId) {
+    console.log(tagId);
+    
     axios.get(apiUrl + '/posts/filter/' + tagId)
       .then(response => {
         const items = response.data.data;
-        this.state.items = items;
+          this.setState({ items });
+
+        console.log(items);
       })
       .catch(function (error) {
         console.log(error);

@@ -23,10 +23,10 @@ class TagsList extends Component {
           });
     }
 
-    handleAction(tagId) {
-      this.props.onAction(tagId);
-      console.log(tagId);
-      
+    handleAction(event) {
+      event.preventDefault();
+      console.log(event.target.id);
+      this.props.onAction(event.target.id);
     }
     
 
@@ -35,8 +35,6 @@ class TagsList extends Component {
         
         return (
             <div class="column">
-
-
              <div class="card">
             <header className="card-header">
               <p className="card-header-title">
@@ -46,7 +44,7 @@ class TagsList extends Component {
             <div class="card-content">
               <div class="content">
                 {this.state.tags.map(tag =>
-                    <a href="#" onClick={this.handleAction(tag.id)}><h1 key={tag.id} class="subtitle is-5">{tag.title}</h1></a>
+                    <input className="button is-text tags" type="button" value={tag.title} id={tag.id} onClick={this.handleAction} />
                 )}
               </div>
             </div>
