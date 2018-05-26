@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AdminPostItem from './AdminPostItem';
 import axios from 'axios';
 import apiUrl from '../../../tools/connection';
+import AuthService from '../../../tools/Services/AuthService';
 
 class AdminPostList extends Component {
 
@@ -12,7 +13,7 @@ class AdminPostList extends Component {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         axios.get(apiUrl + '/posts')
           .then(response => {
             const items = response.data.data;

@@ -30,23 +30,20 @@ class Login extends Component {
         event.preventDefault();
         this.Auth = new AuthService();
         this.Auth.login(this.state.email, this.state.password);
+        console.log('dd');
         this.check();
     }
 
     check() {
         this.Auth = new AuthService();
-        console.log(this.Auth.loggedIn());
-        
-
         if (this.Auth.loggedIn() !== false) {
+            console.log('ee');
             window.location = "/admin";
         }
     }
 
 
     render() {
-        console.log(this.state);
-        
         return (
                 <div className="site">
                     <div className="content">

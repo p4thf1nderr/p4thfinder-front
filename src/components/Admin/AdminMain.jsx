@@ -5,19 +5,20 @@ import AdminHeader from './AdminHeader/AdminHeader'
 import AuthService from '../../tools/Services/AuthService';
 
 class AdminMain extends Component {
-
     componentWillMount() {
         this.Auth = new AuthService();
-
+        this.hide = 'hide';
         if (!this.Auth.loggedIn()) {
             window.location = "/login";
+        } else {
+            this.hide = '';
         }
     }
 
 
     render() {
         return (
-            <div className="site">
+            <div className={this.hide + ' site'}>
                 <AdminHeader />
                 <div className="content">
                     <AdminPostList />

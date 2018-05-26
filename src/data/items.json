@@ -8,6 +8,11 @@
         "id": 2,
         "href": "/contacts",
         "name": "Контакты"
+    },
+    {
+        "id": 3,
+        "href": "http://github.com/TretyakovArtem",
+        "name": "GitHub"
     }
 ]
   

@@ -16,4 +16,6 @@ class Footer extends Component {
     };
 }
 
+let a = 2;
+
 export default Footer;
