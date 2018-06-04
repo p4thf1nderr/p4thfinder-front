@@ -12,7 +12,6 @@ class ContactForm extends Component {
                     </div>
                 </div>
 
-
                 <div class="field">
                   <label class="label">Email</label>
                   <div class="control has-icons-left has-icons-right">
