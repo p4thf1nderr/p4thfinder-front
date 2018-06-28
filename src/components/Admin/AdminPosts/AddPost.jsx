@@ -6,6 +6,11 @@ import AuthService from '../../../tools/Services/AuthService';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import Footer from '../../Footer/Footer';
 import CheckBox from '../Checkbox/Checkbox';
+import { Editor } from 'react-draft-wysiwyg';
+import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+const EditorComponent = () => <Editor />
+
 
 class AddPost extends Component {
     constructor(props) {
@@ -80,6 +85,7 @@ class AddPost extends Component {
                 <AdminHeader />
                 <br />
                 <div className="content">
+                <EditorComponent />
                     <form onSubmit={this.handleSubmit}>
                         <div class="field">
                             <div class="control">
