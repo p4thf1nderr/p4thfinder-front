@@ -3,6 +3,7 @@ import axios from 'axios';
 import apiUrl from '../../tools/connection';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import renderHTML from 'react-render-html';
 
 
 class PostDetail extends Component
@@ -20,13 +21,10 @@ class PostDetail extends Component
         axios.get(apiUrl + '/posts/' + this.state.id)
           .then(response => {
             const item = response.data.data;
-            //console.log(item);
-            
             this.setState({
                  title: item.title,
                  text: item.text 
             });
-            //console.log(response.data.data);
             
           })
           .catch(function (error) {
@@ -42,7 +40,7 @@ class PostDetail extends Component
                 <br />
                 <div className="content">
                     <h2>{this.state.title}</h2>
-                    <p>{this.state.text}</p>
+                    {renderHTML(this.state.text)}
                 </div>
                 <Footer />
                {/*  <Header />

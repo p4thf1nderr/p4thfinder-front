@@ -3,8 +3,15 @@ import axios from 'axios';
 
 import apiUrl from '../../../tools/connection';
 import AuthService from '../../../tools/Services/AuthService';
-import AdminHeader from '../AdminHeader/AdminHeader'
-import Footer from '../../Footer/Footer'
+import AdminHeader from '../AdminHeader/AdminHeader';
+import Footer from '../../Footer/Footer';
+import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { EditorState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import { convertToRaw } from 'draft-js';
+import draftToHtml from "draftjs-to-html";
+
+
 
 class UpdatePost extends Component {
     constructor(props) {
@@ -13,11 +20,19 @@ class UpdatePost extends Component {
             title: '',
             text: '',
             id: this.props.match.params.id,
+            editorState: EditorState.createEmpty()
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
+        this.onEditorStateChange = this.onEditorStateChange.bind(this);
+    }
+
+
+    onEditorStateChange(editorState) {
+        this.setState({
+            editorState,
+        });
     }
 
 
@@ -25,13 +40,10 @@ class UpdatePost extends Component {
         axios.get(apiUrl + '/posts/' + this.state.id)
           .then(response => {
             const item = response.data.data;
-            //console.log(item);
-            
             this.setState({
                  title: item.title,
                  text: item.text 
             });
-            //console.log(response.data.data);
             
           })
           .catch(function (error) {
@@ -44,7 +56,7 @@ class UpdatePost extends Component {
         event.preventDefault();
         const variables = {
               title: this.state.title,
-              text: this.state.text
+              text: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
         };
 
         this.Auth = new AuthService();
@@ -75,9 +87,6 @@ class UpdatePost extends Component {
         this.setState({title:event.target.value})
     }
 
-    handleTextChange(event) {
-        this.setState({text:event.target.value})
-    }
 
     render() {
         return (
@@ -93,7 +102,10 @@ class UpdatePost extends Component {
                         </div>
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" placeholder="Текст" onChange={this.handleTextChange} value={this.state.text} className="textarea"></textarea>
+                                <Editor
+                                    editorState={this.state.editorState}
+                                    onEditorStateChange={this.onEditorStateChange}
+                                  />
                             </div>
                         </div>
                         <div class="field is-grouped">
