@@ -6,10 +6,11 @@ import AuthService from '../../../tools/Services/AuthService';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import Footer from '../../Footer/Footer';
 import CheckBox from '../Checkbox/Checkbox';
-import { Editor } from 'react-draft-wysiwyg';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
-const EditorComponent = () => <Editor />
+import { EditorState } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import { convertToRaw } from 'draft-js';
+import draftToHtml from "draftjs-to-html";
 
 
 class AddPost extends Component {
@@ -18,21 +19,29 @@ class AddPost extends Component {
         this.state = {
             title: '',
             text: '',
-            checked: []
+            checked: [],
+            editorState: EditorState.createEmpty()
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
-        this.handleTextChange = this.handleTextChange.bind(this);
+        //this.handleTextChange = this.handleTextChange.bind(this);
         this.checkedTags = this.checkedTags.bind(this);
+        this.onEditorStateChange = this.onEditorStateChange.bind(this);
     }
 
+
+    onEditorStateChange(editorState) {
+        this.setState({
+            editorState,
+        });
+    }
 
     handleSubmit(event) {
         event.preventDefault();
         const variables = {
               title: this.state.title,
-              text: this.state.text,
+              text: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
               checked: this.state.checked
         };
         console.log(variables);
@@ -66,9 +75,6 @@ class AddPost extends Component {
         this.setState({title:event.target.value})
     }
 
-    handleTextChange(event) {
-        this.setState({text:event.target.value})
-    }
 
     checkedTags(event) {
         console.log(event);
@@ -77,7 +83,7 @@ class AddPost extends Component {
     }
 
     render() {
-        console.log(this.state.checked);
+        console.log(this.state.editorState);
         
         return (
             (
@@ -85,7 +91,6 @@ class AddPost extends Component {
                 <AdminHeader />
                 <br />
                 <div className="content">
-                <EditorComponent />
                     <form onSubmit={this.handleSubmit}>
                         <div class="field">
                             <div class="control">
@@ -94,7 +99,10 @@ class AddPost extends Component {
                         </div>
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" placeholder="Текст" onChange={this.handleTextChange} value={this.state.text} className="textarea"></textarea>
+                                <Editor
+                                    editorState={this.state.editorState}
+                                    onEditorStateChange={this.onEditorStateChange}
+                                  />
                             </div>
                         </div>
                         <CheckBox onChange={this.checkedTags}/>
