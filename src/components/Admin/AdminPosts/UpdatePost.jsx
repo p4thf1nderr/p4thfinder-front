@@ -8,7 +8,7 @@ import Footer from '../../Footer/Footer';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
-import { convertToRaw } from 'draft-js';
+import { convertToRaw, convertFromRaw, convertFromHTML, ContentState, compositeDecorator} from 'draft-js';
 import draftToHtml from "draftjs-to-html";
 
 
@@ -40,10 +40,25 @@ class UpdatePost extends Component {
         axios.get(apiUrl + '/posts/' + this.state.id)
           .then(response => {
             const item = response.data.data;
+
+            const blocksFromHTML = convertFromHTML(item.text);
+            const state = ContentState.createFromBlockArray(
+              blocksFromHTML.contentBlocks,
+              blocksFromHTML.entityMap,
+            );
+
+
+            
             this.setState({
                  title: item.title,
-                 text: item.text 
+                 text: item.text,
+                 editorState: EditorState.createWithContent(
+                    state,
+                    compositeDecorator,
+                  ),
             });
+
+            
             
           })
           .catch(function (error) {
