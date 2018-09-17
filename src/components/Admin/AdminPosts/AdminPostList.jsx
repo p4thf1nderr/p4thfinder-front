@@ -45,9 +45,6 @@ class AdminPostList extends Component {
                         </div>
                     </div>
                     <div class="column">
-                    <p class="panel-heading post-admin-list">
-                            Список тегов
-                        </p>
                         <TagsList />
                         </div>
                     </div>
