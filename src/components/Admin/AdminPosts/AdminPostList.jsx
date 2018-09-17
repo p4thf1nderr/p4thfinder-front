@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AdminPostItem from './AdminPostItem';
+import TagsList from '../../../components/Tags/TagList';
 import axios from 'axios';
 import apiUrl from '../../../tools/connection';
 import AuthService from '../../../tools/Services/AuthService';
@@ -28,6 +29,8 @@ class AdminPostList extends Component {
         return (
                 <div>
                     <nav class="panel">
+                    <div className="columns">
+                    <div className="column is-four-fifths">
                         <p class="panel-heading post-admin-list">
                             Список постов
                         </p>
@@ -40,6 +43,14 @@ class AdminPostList extends Component {
                             пагинацию сюда
                             </button>
                         </div>
+                    </div>
+                    <div class="column">
+                    <p class="panel-heading post-admin-list">
+                            Список тегов
+                        </p>
+                        <TagsList />
+                        </div>
+                    </div>
                     </nav>
                     <a href="/admin/posts/new" class="button is-primary is-outlined">Создать</a>
                 </div>
