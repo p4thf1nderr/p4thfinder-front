@@ -5,6 +5,7 @@ import apiUrl from '../../../tools/connection';
 import AuthService from '../../../tools/Services/AuthService';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import Footer from '../../Footer/Footer';
+import CheckBox from '../Checkbox/Checkbox';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -19,11 +20,14 @@ class UpdatePost extends Component {
         this.state = {
             title: '',
             text: '',
+            tags: [],
+            checked: [],
             id: this.props.match.params.id,
             editorState: EditorState.createEmpty()
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.checkedTags = this.checkedTags.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.onEditorStateChange = this.onEditorStateChange.bind(this);
     }
@@ -35,11 +39,19 @@ class UpdatePost extends Component {
         });
     }
 
+    checkedTags(event) {
+        console.log(event);
+        
+        this.setState({checked:event})
+    }
+
 
     componentWillMount() {
         axios.get(apiUrl + '/posts/' + this.state.id)
           .then(response => {
             const item = response.data.data;
+            console.log(item);
+            
 
             const blocksFromHTML = convertFromHTML(item.text);
             const state = ContentState.createFromBlockArray(
@@ -47,18 +59,15 @@ class UpdatePost extends Component {
               blocksFromHTML.entityMap,
             );
 
-
-            
             this.setState({
                  title: item.title,
                  text: item.text,
+                 tags: item.tags,
                  editorState: EditorState.createWithContent(
                     state,
                     compositeDecorator,
                   ),
             });
-
-            
             
           })
           .catch(function (error) {
@@ -122,7 +131,11 @@ class UpdatePost extends Component {
                                     onEditorStateChange={this.onEditorStateChange}
                                   />
                             </div>
+                            {this.state.tags.map(item =>
+                            <h2>{item.title}</h2>
+                        )} 
                         </div>
+                        <CheckBox onChange={this.checkedTags}/>
                         <div class="field is-grouped">
                             <div class="control">
                                 <button class="button is-link">Сохранить</button>

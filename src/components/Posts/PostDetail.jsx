@@ -13,6 +13,7 @@ class PostDetail extends Component
         this.state = {
             title: '',
             text: '',
+            tags: [],
             id: this.props.match.params.id,
         };
     }
@@ -23,7 +24,8 @@ class PostDetail extends Component
             const item = response.data.data;
             this.setState({
                  title: item.title,
-                 text: item.text 
+                 text: item.text,
+                 tags: item.tags
             });
             
           })

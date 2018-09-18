@@ -50,6 +50,7 @@ class TagListEdit extends Component {
                 )}
               </div>
             </div>
+            <a href={"admin/tags/new"}>Создать категорию</a>
           </div>
         </div>
         );
