@@ -136,7 +136,10 @@ class UpdatePost extends Component {
                             <h2>{item.title}</h2>
                         )} 
                         </div>
-                        <CheckBox onChange={this.checkedTags}/>
+                        <div className="field">
+                            <CheckBox onChange={this.checkedTags}/>
+                        </div>
+                        <br />
                         <div class="field is-grouped">
                             <div class="control">
                                 <button class="button is-link">Сохранить</button>
