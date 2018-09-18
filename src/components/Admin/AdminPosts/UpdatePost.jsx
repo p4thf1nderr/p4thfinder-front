@@ -80,7 +80,8 @@ class UpdatePost extends Component {
         event.preventDefault();
         const variables = {
               title: this.state.title,
-              text: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent()))
+              text: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
+              checked: this.state.checked
         };
 
         this.Auth = new AuthService();
