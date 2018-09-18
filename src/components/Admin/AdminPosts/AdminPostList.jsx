@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import AdminPostItem from './AdminPostItem';
-import TagsList from '../../../components/Tags/TagList';
+import TagListEdit from '../../../components/Tags/TagListEdit';
 import axios from 'axios';
 import apiUrl from '../../../tools/connection';
-import AuthService from '../../../tools/Services/AuthService';
 
 class AdminPostList extends Component {
 
@@ -45,7 +44,7 @@ class AdminPostList extends Component {
                         </div>
                     </div>
                     <div class="column">
-                        <TagsList />
+                    <TagListEdit />
                         </div>
                     </div>
                     </nav>

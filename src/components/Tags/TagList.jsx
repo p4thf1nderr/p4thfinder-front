@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import apiUrl from '../../tools/connection';
 
-class TagsList extends Component {
+class TagList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -54,4 +54,4 @@ class TagsList extends Component {
     }
 }
 
-export default TagsList;
+export default TagList;

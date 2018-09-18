@@ -8,8 +8,10 @@ import ContactMain from './Contacts/ContactMain';
 import AdminMain from './Admin/AdminMain';
 import AddPost from './Admin/AdminPosts/AddPost';
 import UpdatePost from './Admin/AdminPosts/UpdatePost';
+import UpdateTag from './Admin/AdminTags/UpdateTag';
 import Login from './Login/Login';
 import PostDetail from './Posts/PostDetail';
+import TagDetail from './Tags/TagDetail';
 
 
 class App extends Component {
@@ -24,6 +26,8 @@ class App extends Component {
             <Route exact path="/admin/posts/new" component={AddPost} />
             <Route exact path="/admin/posts/edit/:id" component={UpdatePost} />
             <Route exact path="/posts/:id" component={PostDetail} />
+            <Route exact path="/admin/tags/edit/:id" component={UpdateTag} />
+            <Route exact path="/tags/:id" component={TagDetail} />
           </div>
       </BrowserRouter>
     );

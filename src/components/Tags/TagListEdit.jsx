@@ -44,7 +44,9 @@ class TagListEdit extends Component {
             <div class="card-content">
               <div class="content">
                 {this.state.tags.map(tag =>
-                    <input className="button is-text tags" type="button" value={tag.title} id={tag.id} onClick={this.handleAction} />
+                     <a class="panel-block is-active" href={"admin/tags/edit/" + tag.id}>
+                     {tag.title}
+                 </a>
                 )}
               </div>
             </div>
@@ -54,4 +56,4 @@ class TagListEdit extends Component {
     }
 }
 
-export default TagList;
+export default TagListEdit;

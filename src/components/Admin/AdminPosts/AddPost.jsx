@@ -5,7 +5,6 @@ import apiUrl from '../../../tools/connection';
 import AuthService from '../../../tools/Services/AuthService';
 import AdminHeader from '../AdminHeader/AdminHeader';
 import Footer from '../../Footer/Footer';
-import TagsListAdmin from '../AdminTags/TagListAdmin';
 import CheckBox from '../Checkbox/Checkbox';
 import '../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { EditorState } from 'draft-js';
@@ -110,9 +109,6 @@ class AddPost extends Component {
                         <br />
                         <br />
                         <br />
-                        <div class="column">
-                            <TagsListAdmin />
-                        </div>
                         <div class="field is-grouped">
                             <div class="control">
                                 <button class="button is-link">Сохранить</button>
